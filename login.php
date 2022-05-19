@@ -11,7 +11,8 @@
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />
-  <link rel="stylesheet" href="./assets/css/notyf.min.css">
+  <!-- <link rel="stylesheet" href="assets/css/notyf.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
   <?php include './inc/headscript.php' ?>
 </head>
 
@@ -54,8 +55,69 @@
   </main>
 
   <?php include './inc/scripts.php' ?>
-
   <script>
+    const notyf = new Notyf();
+
+    // notyf.error({
+    //   message: 'Accept the terms before moving forward',
+    //   duration: 9000,
+    //   types: [
+    //     {
+    //       type: 'warning',
+    //       background: 'orange',
+    //       icon: {
+    //         className: 'material-icons',
+    //         tagName: 'i',
+    //         text: 'warning'
+    //       }
+    //     },
+    //     {
+    //       type: 'error',
+    //       background: 'indianred',
+    //       duration: 2000,
+    //       dismissible: true
+    //     }
+    //   ]
+    // })
+
+    form = document.querySelector('#login');
+    form.onsubmit = e => {
+      e.preventDefault()
+      fetch('./req/login.php', {
+          method: "POST",
+          body: new FormData(form)
+        })
+        .then(res => res.json())
+        .then(data => {
+
+          // const notyf = new Notyf();
+          data.msgClass == 'success' ? (notyf.success({
+            // message: data.msg,
+            duration: 2000,
+            icon: true,
+            position: {
+              x: "right",
+              y: "top"
+            },
+
+          })) : (notyf.error({
+            message: data.msg,
+            duration: 2000,
+            icon: true,
+            position: {
+              x: "right",
+              y: "top"
+            },
+            
+          }));
+
+
+        })
+
+    }
+  </script>
+
+  <!-- <script>
     const notyf = new Notyf();
 
 
@@ -91,7 +153,7 @@
           
         })
     })
-  </script>
+  </script> -->
 
 
 </body>

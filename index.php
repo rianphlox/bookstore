@@ -93,10 +93,10 @@ $books = $db->getAllBooks();
           <div class="col-xl-12">
             <div class="selling-active">
 
-              <?php foreach ($books as $book) : ?>
-                <?php extract($book) ?>
+              <!-- <?php foreach ($books as $book) : ?>
+                <?php extract($book) ?> -->
 
-                <div class="properties pb-30">
+                <!-- <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
                       <a href="book-details"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
@@ -121,8 +121,34 @@ $books = $db->getAllBooks();
                       </div>
                     </div>
                   </div>
+                </div> -->
+                <div class="properties pb-30">
+                  <div class="properties-card">
+                    <div class="properties-img">
+                      <a href="book-details"><img src="assets\img\icon\xbest_selling3.jpg" alt="" /></a>
+                    </div>
+                    <div class="properties-caption properties-caption2">
+                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <p>J. R Rain</p>
+                      <div class="properties-footer d-flex justify-content-between align-items-center">
+                        <div class="review">
+                          <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                          </div>
+                          <p>(<span>120</span> Review)</p>
+                        </div>
+                        <div class="price">
+                          <span>$50</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              <?php endforeach; ?>
+              <!-- <?php endforeach; ?> -->
 
 
             </div>
@@ -461,7 +487,7 @@ $books = $db->getAllBooks();
                           <p>(<span>120</span> Review)</p>
                         </div>
                         <div class="price">
-                          <span>$50</span>
+                          <span>$34</span>
                         </div>
                       </div>
                     </div>
@@ -545,7 +571,7 @@ $books = $db->getAllBooks();
                           <p>(<span>120</span> Review)</p>
                         </div>
                         <div class="price">
-                          <span>$70</span>
+                          <span>$760</span>
                         </div>
                       </div>
                     </div>

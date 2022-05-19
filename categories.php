@@ -343,32 +343,7 @@ $books = $db->getAllBooks();
 
 
   <?php include './inc/scripts.php' ?>
-  <!-- <script>
-    const form = document.querySelector("#Login");
-    form.addEventListener("submit", e => {
-      e.preventDefault(), fetch("y.php", {
-        method: "POST",
-        body: new FormData(form)
-      }).then(e => e.json()).then(e => {
-        var o = new Notyf;
-        "success" == e.msgClass ? (o.success({
-          message: e.msg,
-          duration: 4e3,
-          position: {
-            x: "right",
-            y: "top"
-          }
-        }), setTimeout(() => window.location = "./Shop", 2e3)) : o.error({
-          message: e.msg,
-          duration: 4e3,
-          position: {
-            x: "right",
-            y: "top"
-          }
-        })
-      })
-    });
-  </script> -->
+  
 </body>
 
 </html>

@@ -55,105 +55,12 @@
   </main>
 
   <?php include './inc/scripts.php' ?>
+
+
   <script>
-    const notyf = new Notyf();
-
-    // notyf.error({
-    //   message: 'Accept the terms before moving forward',
-    //   duration: 9000,
-    //   types: [
-    //     {
-    //       type: 'warning',
-    //       background: 'orange',
-    //       icon: {
-    //         className: 'material-icons',
-    //         tagName: 'i',
-    //         text: 'warning'
-    //       }
-    //     },
-    //     {
-    //       type: 'error',
-    //       background: 'indianred',
-    //       duration: 2000,
-    //       dismissible: true
-    //     }
-    //   ]
-    // })
-
-    form = document.querySelector('#login');
-    form.onsubmit = e => {
-      e.preventDefault()
-      fetch('./req/login.php', {
-          method: "POST",
-          body: new FormData(form)
-        })
-        .then(res => res.json())
-        .then(data => {
-
-          // const notyf = new Notyf();
-          data.msgClass == 'success' ? (notyf.success({
-            // message: data.msg,
-            duration: 2000,
-            icon: true,
-            position: {
-              x: "right",
-              y: "top"
-            },
-
-          })) : (notyf.error({
-            message: data.msg,
-            duration: 2000,
-            icon: true,
-            position: {
-              x: "right",
-              y: "top"
-            },
-            
-          }));
-
-
-        })
-
-    }
+const notyf=new Notyf,form=document.querySelector("#login");form.onsubmit=(o=>{o.preventDefault(),fetch("./req/login.php",{method:"POST",body:new FormData(form)}).then(o=>o.json()).then(o=>{"success"==o.msgClass?notyf.success({message:o.msg,duration:3e3,position:{x:"right",y:"top"}}):notyf.error({message:o.msg,duration:3e3,position:{x:"right",y:"top"}})})});
   </script>
 
-  <!-- <script>
-    const notyf = new Notyf();
-
-
-    const form = document.querySelector('#login')
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch('./req/login.php', {
-          method: "POST",
-          body: new FormData(form)
-        })
-        .then(res => res.json())
-        .then(data => {
-          
-          const notyf = new Notyf();
-          data.msgClass == 'success' ? (notyf.success({
-              message: data.msg,
-              duration: 2000,
-              icon: true,
-              position: {
-                x: "right",
-                y: "top"
-              }
-            })) : (notyf.error({
-              message: data.msg,
-              duration: 2000,
-              icon: true,
-              position: {
-                x: "right",
-                y: "top"
-              }
-            }));
-          
-          
-        })
-    })
-  </script> -->
 
 
 </body>

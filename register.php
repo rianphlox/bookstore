@@ -11,8 +11,9 @@
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />
-  <link rel="stylesheet" href="./assets/css/notyf.min.css">
-  <!-- <?php include './inc/headscript.php' ?> -->
+  <!-- <link rel="stylesheet" href="assets/css/notyf.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <?php include './inc/headscript.php' ?>
 </head>
 
 <body>
@@ -58,37 +59,47 @@
 
   <?php include './inc/scripts.php' ?>
   <script>
+    const notyf = new Notyf();
     const form = document.querySelector('#register')
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      // new FormData(form)
-      fetch('./req/register.php', {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(res => res.json())
-        .then(data => {
-          const notyf = new Notyf();
-          data.msgClass == 'success' ? (notyf.success({
-            message: data.msg,
-            duration: 2000,
-            icon: true,
-            position: {
-              x: "right",
-              y: "top"
-            }
-          })) : (notyf.error({
-            message: data.msg,
-            duration: 2000,
-            icon: true,
-            position: {
-              x: "right",
-              y: "top"
-            }
-          }));
-        })
-
-    }).catch(err => console.error(err))
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      fetch('./req/register.php'. {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+    }
+    // form.addEventListener('submit', e => {
+    //   e.preventDefault()
+    //   fetch('./req/register.php', {
+    //       method: 'POST',
+    //       body: new FormData(form)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       data.msgClass == 'success' ? (
+    //         notyf.success({
+    //             message: data.msg,
+    //             duration: 3000,
+    //             position: {
+    //                   x: "right",
+    //                   y: "top"
+    //                 }
+    //           })
+    //       )
+    //       ) : (
+    //         notyf.error({
+    //           message: data.msg,
+    //           duration: 3000,
+    //           position: {
+    //             x: 'right',
+    //             y: 'top'
+    //           }
+    //         })
+    //       )
+    //     }).catch(err => console.error(err))
   </script>
 </body>
 

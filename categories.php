@@ -297,6 +297,7 @@ $books = $db->getAllBooks();
                         </div>
                       </div>
                     </div>
+                    <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
                   </div>
 
                 <?php endforeach; ?>

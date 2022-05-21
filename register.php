@@ -59,47 +59,7 @@
 
   <?php include './inc/scripts.php' ?>
   <script>
-    const notyf = new Notyf();
-    const form = document.querySelector('#register')
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      fetch('./req/register.php'. {
-        method: 'POST',
-        body: new FormData(form)
-      }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-    }
-    // form.addEventListener('submit', e => {
-    //   e.preventDefault()
-    //   fetch('./req/register.php', {
-    //       method: 'POST',
-    //       body: new FormData(form)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       data.msgClass == 'success' ? (
-    //         notyf.success({
-    //             message: data.msg,
-    //             duration: 3000,
-    //             position: {
-    //                   x: "right",
-    //                   y: "top"
-    //                 }
-    //           })
-    //       )
-    //       ) : (
-    //         notyf.error({
-    //           message: data.msg,
-    //           duration: 3000,
-    //           position: {
-    //             x: 'right',
-    //             y: 'top'
-    //           }
-    //         })
-    //       )
-    //     }).catch(err => console.error(err))
+    const notyf=new Notyf,form=document.querySelector("#register");form.onsubmit=(e=>{e.preventDefault(),fetch("./req/register.php",{method:"POST",body:new FormData(form)}).then(e=>e.json()).then(e=>{"success"==e.msgClass?notyf.success({message:e.msg,duration:3e3,position:{x:"right",y:"top"}}):notyf.error({message:e.msg,duration:3e3,position:{x:"right",y:"top"}})})});
   </script>
 </body>
 

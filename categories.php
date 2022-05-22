@@ -20,6 +20,7 @@ $books = $db->getAllBooks();
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/notyf.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
 
   <?php include './inc/headscript.php' ?>
 </head>
@@ -282,11 +283,11 @@ $books = $db->getAllBooks();
                           <div class="properties-footer d-flex justify-content-between align-items-center">
                             <div class="review">
                               <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-alt"></i>
                               </div>
                               <p>(<span>120</span> Review)</p>
                             </div>
@@ -297,43 +298,49 @@ $books = $db->getAllBooks();
                         </div>
                       </div>
                     </div>
-                    <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
+                    <div class="text-center mb-4">
+                      <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
+                    </div>
                   </div>
 
                 <?php endforeach; ?>
 
 
 
-                
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="more-btn text-center mt-15">
-                  <a href="#" class="border-btn border-btn2 more-btn2">Browse More</a>
+
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="more-btn text-center mt-15">
+                      <a href="#" class="border-btn border-btn2 more-btn2">Browse More</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
 
-    <section class="subscribe-area">
-      <div class="container">
-        <div class="subscribe-caption text-center  subscribe-padding section-img2-bg" data-background="assets/img/gallery/section-bg1.jpg">
-          <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-9">
-              <h3>Join Newsletter</h3>
-              <p>Lorem started its journey with cast iron (CI) products in 1980. The initial main objective was to ensure pure water and affordable irrigation.</p>
-              <form action="#">
-                <input type="text" placeholder="Enter your email">
-                <button class="subscribe-btn">Subscribe</button>
-              </form>
+        <section class="subscribe-area">
+          <div class="container">
+            <div class="subscribe-caption text-center subscribe-padding section-img2-bg" data-background="https://preview.colorlib.com/theme/abcbook/assets/img/gallery/section-bg1.jpg.webp">
+              <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-9">
+                  <h3>Join Newsletter</h3>
+                  <p>
+                    Lorem started its journey with cast iron (CI) products in
+                    1980. The initial main objective was to ensure pure water and
+                    affordable irrigation.
+                  </p>
+                  <form action="#">
+                    <input type="text" placeholder="Enter your email" />
+                    <button class="subscribe-btn">Subscribe</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
   </main>
   <?php include './inc/footer.php' ?>
@@ -344,7 +351,7 @@ $books = $db->getAllBooks();
 
 
   <?php include './inc/scripts.php' ?>
-  
+
 </body>
 
 </html>

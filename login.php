@@ -58,7 +58,7 @@
 
 
   <script>
-const notyf=new Notyf,form=document.querySelector("#login");form.onsubmit=(o=>{o.preventDefault(),fetch("./req/login.php",{method:"POST",body:new FormData(form)}).then(o=>o.json()).then(o=>{"success"==o.msgClass?notyf.success({message:o.msg,duration:3e3,position:{x:"right",y:"top"}}):notyf.error({message:o.msg,duration:3e3,position:{x:"right",y:"top"}})})});
+      const notyf=new Notyf,form=document.querySelector("#login");form.onsubmit=(o=>{o.preventDefault(),fetch("./req/login.php",{method:"POST",body:new FormData(form)}).then(o=>o.json()).then(o=>{"success"==o.msgClass?window.location.href="./":notyf.error({message:o.msg,duration:3e3,position:{x:"right",y:"top"}})})});
   </script>
 
 

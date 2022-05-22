@@ -231,6 +231,7 @@ if (isset($_SESSION['name'])) {
 
 
   <?php include './inc/scripts.php' ?>
+  <script src="https://js.paystack.co/v2/inline.js"></script>
 </body>
 
 </html>

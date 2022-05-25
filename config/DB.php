@@ -112,9 +112,9 @@
                 $stmt->bind_result($id);
                 $stmt->fetch();
                 if (!$id) {
-                    $query = "INSERT INTO `bookstore` (`name`, `price`, `author`, `quantity`, `category`, `about` ) VALUES (?, ?, ?, ?, ?, ?')";
-                    $stmt = $this->conn->prepare($query);
-                    $stmt->bind_param('sssisss', $bookname, $price, $author, $quantity, $category, $about);
+                    $sql = "INSERT INTO bookstore (`name`, price, author, quantity, category, about) VALUES (?, ?, ?, ?, ?, ?)";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->bind_param('sssiss', $bookname, $price, $author, $quantity, $category, $about);
                     if ($stmt->execute()) {
                         return ['msg' => 'New book listing Added'];
                     }

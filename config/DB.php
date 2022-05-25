@@ -63,13 +63,13 @@
 
         // }
 
-        public function LogUserIn($email, $password) {
+        public function LogUserIn($table='users', $email, $password) {
             if (!empty($email) && !empty($password)) {
                 // validate email
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     return ['msg' => 'Please use a valid email!', 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
                 } else {
-                    $query = "SELECT email, password FROM users WHERE email = ? ";
+                    $query = "SELECT email, password FROM $table WHERE email = ? ";
                     $stmt = $this->conn->prepare($query);
                     $stmt->bind_param('s', $email);
                     $stmt->execute();
@@ -91,4 +91,44 @@
                 return ['msg' => 'Please fill in all fields!', 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
             }
         }
+
+        public function sanitize($field) {
+            return htmlspecialchars(trim(stripslashes($field)));
+        }
+
+
+        public function addBook($bookname, $author, $price, $quantity, $category, $about) {
+            $args = func_get_args();
+            if (!empty($bookname) && !empty($author) && !empty($price) && !empty($category) && !empty($about)) {
+                // first sanitize
+                foreach($args as $arg) {
+                    $arg = $this->sanitize($arg);
+                }
+                // check if book already exists
+                $sql = "select id from bookstore where name = ?";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bind_param('s', $bookname);
+                $stmt->execute();
+                $stmt->bind_result($id);
+                $stmt->fetch();
+                if (!$id) {
+                    $query = "INSERT INTO `bookstore` (`name`, `price`, `author`, `quantity`, `category`, `about` ) VALUES (?, ?, ?, ?, ?, ?')";
+                    $stmt = $this->conn->prepare($query);
+                    $stmt->bind_param('sssisss', $bookname, $price, $author, $quantity, $category, $about);
+                    if ($stmt->execute()) {
+                        return ['msg' => 'New book listing Added'];
+                    }
+                } else {
+                    return array('msg' => 'Book with that name exists! Contact support', 'msgClass' => 'error');
+                }
+
+            } else {
+                return ['msg' => 'Please fill in all fields.', 'msgClass' => 'warning'];
+            }
+            
+        }
+        
     }
+
+    
+    

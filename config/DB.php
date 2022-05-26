@@ -188,7 +188,7 @@
             }
         }
 
-        public function GetCartItems($userEmail) {
+        public function getCartItems($userEmail) {
             if (!$userEmail) {
                 // get products from general cart
                 $query = "SELECT * FROM cart";
@@ -205,7 +205,7 @@
             }
         }
 
-        public function GetTotalAmount($userEmail) {
+        public function getTotalAmount($userEmail) {
             $total = 0;
             if (!$userEmail) {
                 $query = "SELECT * FROM cart";

@@ -91,7 +91,7 @@ $books = $db->getAllBooks();
                         </ul>
                       </li>
                       <li><a href="blog">Blog</a></li>
-                      <li><a href="contact">Contect</a></li>
+                      <li><a href="contact">Contact</a></li>
                     </ul>
                   </nav>
                 </div>
@@ -272,32 +272,34 @@ $books = $db->getAllBooks();
                 <?php foreach ($books as $book) : ?>
                   <?php extract($book) ?>
                   <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-12 col-sm-6">
-                    <div class="properties pb-30">
-                      <div class="properties-card">
-                        <div class="properties-img">
-                          <a href="book-details"><img src="./assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="3024796714" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
-                        </div>
-                        <div class="properties-caption properties-caption2">
-                          <h3><a href="book-details"><?= $name ?></a></h3>
-                          <p><?= $author ?></p>
-                          <div class="properties-footer d-flex justify-content-between align-items-center">
-                            <div class="review">
-                              <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-alt"></i>
+                    <form class="books">
+                      <div class="properties pb-30">
+                        <div class="properties-card">
+                          <div class="properties-img">
+                            <a href="book-details"><img src="./assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="3024796714" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                          </div>
+                          <div class="properties-caption properties-caption2">
+                            <h3><a href="book-details"><?= $name ?></a></h3>
+                            <p><?= $author ?></p>
+                            <div class="properties-footer d-flex justify-content-between align-items-center">
+                              <div class="review">
+                                <div class="rating">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star-half-alt"></i>
+                                </div>
+                                <p>(<span>120</span> Review)</p>
                               </div>
-                              <p>(<span>120</span> Review)</p>
-                            </div>
-                            <div class="price">
-                              <span>$<?= $price ?></span>
+                              <div class="price">
+                                <span>$<?= $price ?></span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                     <div class="text-center mb-4">
                       <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
                     </div>
@@ -348,9 +350,20 @@ $books = $db->getAllBooks();
   <div id="back-top">
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
   </div>
-
-
+  
   <?php include './inc/scripts.php' ?>
+  <script>
+    const forms = document.querySelectorAll('.books')
+    forms.forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        // fetch('')
+        // .then($res => $res.json())
+        // .then(data = console(done))
+      })
+    })
+  </script>
+
 
 </body>
 

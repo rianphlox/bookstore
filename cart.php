@@ -1,3 +1,10 @@
+<?php
+    require_once './config/DB.php';
+
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 

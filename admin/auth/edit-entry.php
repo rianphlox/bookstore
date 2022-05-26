@@ -15,8 +15,6 @@
         } else {
           header('location: tables-basic');
         }
-        
-
 
         if (isset($_POST['submit'])) {
           $bookname = $_POST['bookname'];
@@ -26,16 +24,21 @@
           $category = $_POST['category'];
           $about = $_POST['about'];
           $updated_id = (int)$_POST['updated_id'];
-        
+      
           
           $sql = "UPDATE `bookstore` SET `name` = ?, price = ?, author = ?, quantity = ?, category = ?, about = ? WHERE `bookstore`.`id` = ?";
+          // $sql = "UPDATE `bookstore` SET `name` = 'Rain Falling', `price` = '37', `author` = 'Fischer Ryan', `quantity` = '12', `category` = 'crime', `about` = 'Nothing Much. Really!' WHERE `bookstore`.`id` = 2";
           $stmt = $conn->prepare($sql);
           $stmt->bind_param('sssissi', $bookname, $price, $author, $quantity, $category, $about, $updated_id);
           if ($stmt->execute()) {
-            header('location: tables-basic');
+            header('location: tables-basic?edit=true');
           }
           
-        }
+      }
+        
+
+
+        
 
 ?>
 
@@ -163,7 +166,7 @@
                     <small class="text-muted float-end">Enter book details</small>
                   </div>
                   <div class="card-body">
-                    <form id="edit" method="POST" action="<?= $_SERVER['PHP_SELF'] ?>">
+                    <form id="edit" method="POST" action="<?= htmlentities($_SERVER['PHP_SELF']) ?>">
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-fullname">Book Name</label>
                         <div class="input-group input-group-merge">

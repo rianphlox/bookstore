@@ -1,8 +1,8 @@
 <?php
-require_once './config/DB.php';
+    require_once './config/DB.php';
 
-$db = new DB();
-$books = $db->getAllBooks();
+    $db = new DB();
+    $books = $db->getAllBooks();
 
 ?>
 

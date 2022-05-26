@@ -132,7 +132,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Book Entries</h4>
 
               <!-- Basic Bootstrap Table -->
               <div class="card">
@@ -162,10 +162,10 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
+                              <a class="dropdown-item" href="edit-entry?id=<?= $id ?>"
                                 ><i class="bx bx-edit-alt me-1"></i> Edit</a
                               >
-                              <a class="dropdown-item" href="javascript:void(0);"
+                              <a class="dropdown-item" href="delete?id=<?= $id ?>"
                                 ><i class="bx bx-trash me-1"></i> Delete</a
                               >
                             </div>

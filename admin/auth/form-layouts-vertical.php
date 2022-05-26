@@ -259,8 +259,8 @@
         fetch('../req/add.php', {
           method:  'POST',
           body: new FormData(form)
-        }).then(res => res.text())
-        .then(data => console.log(data))
+        }).then(res => res.json())
+        .then(data => {console.log(data); form.reset()})
       }
     </script>
   </body>

@@ -167,8 +167,8 @@
               </tbody>
             </table>
             <div class="checkout_btn_inner float-right">
-              <a class="btn" href="#">Continue Shopping</a>
-              <a class="btn checkout_btn" href="#">Proceed to checkout</a>
+              <a class="btn" href="./categories.php">Continue Shopping</a>
+              <a class="btn checkout_btn" href="./checkout.php">Proceed to checkout</a>
             </div>
           </div>
         </div>

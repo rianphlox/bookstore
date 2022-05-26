@@ -46,7 +46,7 @@
                         $stmt->bind_param('sss', $full_name, $email, $hashedPassword);
                         if ($stmt->execute()) {
                             // create cart for user using email
-                            // $this->CreateUserCart($email);
+                            $this->CreateUserCart($email);
                             return ['msg' => 'Success!', 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
                         }
                     } else {
@@ -129,9 +129,115 @@
             
         }
 
-        // public function editBook() {
+        public function CreateUserCart($email) {
+            $email = explode('@', $email)[0];
+            $tablename = strtolower($email) ."_cart";
+            $query = "CREATE TABLE $this->dbname.$tablename
+            ( `id` INT(10) NOT NULL AUTO_INCREMENT , 
+            `image_name` varchar(255) NOT NULL ,
+            `image_path` varchar(255) NOT NULL , 
+            `current_price` INT(255) NOT NULL , 
+            `quantity` INT(10) NOT NULL , 
+            PRIMARY KEY (`id`)) ENGINE = MyISAM;
+            ";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+        }
 
-        // }
+        public function AddToCart($userEmail, $image_name, $image_path, $current_price, $quantity) {
+            if ($userEmail == '') {
+                $query = "SELECT id FROM cart WHERE image_name = ?";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bind_param('s', $image_name);
+                $stmt->execute();
+                $stmt->bind_result($id);
+                $stmt->fetch();
+                
+                if (!$id) {
+                    $query = "INSERT INTO cart (image_name, image_path, current_price, quantity) VALUES (?, ?, ?, ?)";
+                    $stmt = $this->conn->prepare($query);
+                    $stmt->bind_param('ssii', $image_name, $image_path, $current_price, $quantity);
+                    if ($stmt->execute()) {
+                        return ['msg' => 'Item added to cart!' , 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
+                    }
+                } else {
+                    // return ['msg' => 'Item already in cart!', 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
+                    return ['msg' => 'Item already in cart!' , 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
+                }
+            } else {
+                $tablename = "{$userEmail}_cart" ;
+                // check if item already in cart
+                $query = "SELECT id FROM $tablename WHERE image_name = ?";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bind_param('s', $image_name);
+                $stmt->execute();
+                $stmt->bind_result($id);
+                $stmt->fetch();
+                if (!$id) {
+                    // product not in users cart
+                    $query = "INSERT INTO $tablename (image_name, image_path, current_price, quantity) VALUES (?, ?, ?, ?)";
+                    $stmt = $this->conn->prepare($query);
+                    $stmt->bind_param('ssii', $image_name, $image_path, $current_price, $quantity);
+                    if ($stmt->execute()) {
+                        return ['msg' => 'Item added to cart!' , 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
+                    }
+                } else {
+                    // product already in users cart
+                    return ['msg' => 'Item already in cart!' , 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
+                }
+            }
+        }
+
+        public function GetCartItems($userEmail) {
+            if (!$userEmail) {
+                // get products from general cart
+                $query = "SELECT * FROM cart";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+                return $stmt->get_result();
+            } else {
+                $tablename = "{$userEmail}_cart";
+                $query = "SELECT * FROM $tablename";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+                return $stmt->get_result();
+
+            }
+        }
+
+        public function GetTotalAmount($userEmail) {
+            $total = 0;
+            if (!$userEmail) {
+                $query = "SELECT * FROM cart";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+                $result  = $stmt->get_result();
+                if (!$result->num_rows) {
+                    return 0;
+                } else {
+                    while ($row = $result->fetch_assoc()) {
+                        $total += $row['current_price'];
+                    }
+                    return $total;
+                }
+            } else {
+                $tablename = "{$userEmail}_cart";
+                $query = "SELECT * FROM $tablename";
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+                $result  = $stmt->get_result();
+                if (!$result->num_rows) {
+                    return $total;
+                } else {
+                    while ($row = $result->fetch_assoc()) {
+                        $total += $row['current_price'];
+                    }
+                    return $total;
+                }
+            }
+        }
+
+
 
         
         

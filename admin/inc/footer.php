@@ -8,13 +8,13 @@
             , made with ❤️ by
             <a href="https://themeselection.com" class="footer-link fw-bolder">ThemeSelection</a>
         </div>
-        <div>
+        <!-- <div>
             <a href="javascript:void(0);" class="footer-link me-4">License</a>
             <a href="javascript:void(0);" class="footer-link me-4">More Themes</a>
 
             <a href="javascript:void(0);" class="footer-link me-4">Documentation</a>
 
             <a href="javascript:void(0);" class="footer-link me-4">Support</a>
-        </div>
+        </div> -->
     </div>
 </footer>

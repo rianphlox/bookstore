@@ -11,8 +11,8 @@
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />
-  <!-- <link rel="stylesheet" href="assets/css/notyf.min.css"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <link rel="stylesheet" href="assets/css/notyf.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"> -->
   <?php include './inc/headscript.php' ?>
 </head>
 
@@ -54,11 +54,19 @@
     </div>
   </main>
 
+
   <?php include './inc/scripts.php' ?>
 
-
   <script>
-      const notyf=new Notyf,form=document.querySelector("#login");form.onsubmit=(o=>{o.preventDefault(),fetch("./req/login.php",{method:"POST",body:new FormData(form)}).then(o=>o.json()).then(o=>{"success"==o.msgClass?window.location.href="./":notyf.error({message:o.msg,duration:3e3,position:{x:"right",y:"top"}})})});
+    document.getElementById('login').onsubmit = function(e) {
+      e.preventDefault();
+      fetch('./req/login.php', {
+        method: 'POST',
+        body : new FormData(document.getElementById('login'))
+      }).then(res => res.json().then(data =>  {
+        data.msgClass == 'success' ? window.location.href='./cart' : (document.getElementById('login').reset())
+      }))
+    }
   </script>
 
 

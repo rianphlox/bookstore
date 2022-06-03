@@ -125,7 +125,7 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling3.jpg" alt="" /></a>
+                      <a href="book-details"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
                       <h3><a href="book-details">Moon Dance</a></h3>

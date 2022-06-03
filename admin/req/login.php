@@ -4,18 +4,15 @@
     $db = new DB();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        $email = $db->conn->real_escape_string($_POST['email']);
+        $password = $db->conn->real_escape_string($_POST['password']);
+        
+        
+        
+        
 
-        // print_r($_POST);
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-    
-        $email = htmlentities(trim($email));
-        $password = htmlentities(trim($password));
-        $res = $db->LogUserIn($table='admin', $email, $password);
-
+        $res = $db->LogUserIn('admin', $email, $password);
         echo json_encode($res);
 
-
     }
-
-  

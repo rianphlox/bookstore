@@ -1,8 +1,9 @@
-<?php
-require './config/DB.php';
-session_start();
-if (isset($_SESSION['name'])) {
-}
+<?php 
+    require './config/DB.php';
+    $db = new DB();
+    session_start();
+    $email = isset($_SESSION['email']) ? strtolower(explode('@', $_SESSION['email'])[0]) : '';
+    // echo $email;
 
 ?>
 
@@ -44,7 +45,7 @@ if (isset($_SESSION['name'])) {
 
     <section class="checkout_area section-padding">
       <div class="container">
-        <?php if (!isset($_SESSION['logged_in'])) : ?>
+        <?php if (!isset($_SESSION['email'])) : ?>
           <div class="returning_customer">
             <div class="check_title">
               <h2>
@@ -163,44 +164,42 @@ if (isset($_SESSION['name'])) {
                 <h2>Your Order</h2>
                 <ul class="list">
                   <li>
-                    <a href="#">Product<span>Total</span>
+                    <a href="javascript:void(0);">Product<span>Total</span>
                     </a>
                   </li>
-                  <li>
-                    <a href="#">Fresh Blackberry
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Fresh Tomatoes
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Fresh Brocoli
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
+                  <?php $results = $db->getCartItems($email); ?>
+                  <?php if (!$results->num_rows): ?> <!-- Nothing in that person cart -->
+                    <li>
+                      <a href="javascript:void(0);">Nothing in cart
+                        <span class="middle"></span>
+                        <span class="last"></span>
+                      </a>
+                    </li>
+                    <?php else: ?>
+                      <?php foreach($results as $result): ?>
+                        <?php extract($result) ?>
+                        <li>
+                          <a href="javascript:void(0);"><?= $name ?>
+                            <span class="middle">x <?= $quantity ?></span>
+                            <span class="last">$<?= $price ?>.00</span>
+                          </a>
+                        </li>
+                      <?php endforeach; ?>
+                  <?php endif; ?>
+                  
                 </ul>
                 <ul class="list list_2">
+                  <?php $total = $db->getTotalAmount($email) ; ?>
                   <li>
-                    <a href="#">Subtotal <span>$2160.00</span></a>
+                    <a href="javascript:void(0);">Subtotal <span>$<?= $total ?>.00</span></a>
                   </li>
                   <li>
-                    <a href="#">Shipping
-                      <span>Flat rate: $50.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">Total<span>$2210.00</span>
+                    <a href="javascript:void(0);">Total<span>$<?= $total ?>.00</span>
                     </a>
                   </li>
                 </ul>
 
-                <div class="payment_item active">
+                <!-- <div class="payment_item active">
                   <div class="radion_btn">
                     <input type="radio" id="f-option6" name="selector" />
                     <label for="f-option6">Paypal </label>
@@ -209,12 +208,12 @@ if (isset($_SESSION['name'])) {
                   </div>
                   <p> Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
                   </p>
-                </div>
+                </div> -->
                 <div class="creat_account checkout-cap">
                   <input type="checkbox" id="f-option8" name="selector" />
                   <label for="f-option8">I’ve read and accept the <a href="#">terms & conditions*</a> </label>
                 </div>
-                <a class="btn w-100" href="#">Proceed to Paypal</a>
+                <a class="btn w-100" href="#">Proceed to Paystack</a>
               </div>
             </div>
           </div>
@@ -223,14 +222,14 @@ if (isset($_SESSION['name'])) {
     </section>
 
   </main>
-  <?php include './inc/footer.php' ?>
+  <?php include './inc/footer.php'; ?>
 
   <div id="back-top">
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
   </div>
 
 
-  <?php include './inc/scripts.php' ?>
+  <?php include './inc/scripts.php'; ?>
   <script src="https://js.paystack.co/v2/inline.js"></script>
 </body>
 

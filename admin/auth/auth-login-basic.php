@@ -131,7 +131,7 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">bookstore</span>
                 </a>
               </div>
               <!-- /Logo -->
@@ -206,12 +206,20 @@
       const form = document.querySelector('#_form_')
       form.addEventListener('submit', e => {
         e.preventDefault();
-        fetch('admin\req\login.php', {
+        console.log('submitted')
+        fetch('../req/login.php', {
           method: "post",
           body: new FormData(form)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          data.msgClass == 'success' ? window.location.href = './tables-basic' : (
+            () => {
+              console.log(data.msg)
+              form.reset();
+            }
+          ) 
+        })
       })
     </script>
   </body>

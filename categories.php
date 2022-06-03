@@ -18,9 +18,9 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://cutt.ly/kG4ZJXw" />
 
   <link rel="stylesheet" href="assets/css/nv.css" />
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sx.css" />
   <link rel="stylesheet" href="assets/css/notyf.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+
 
   <?php include './inc/headscript.php' ?>
 </head>
@@ -272,11 +272,11 @@
                 <?php foreach ($books as $book) : ?>
                   <?php extract($book) ?>
                   <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-12 col-sm-6">
-                    <form class="books">
+                    <form id="<?= $id ?>" class="book">
                       <div class="properties pb-30">
                         <div class="properties-card">
                           <div class="properties-img">
-                            <a href="book-details"><img src="./assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="3024796714" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                            <a href="book-details?id=<?= $id ?>"><img src="./assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="3024796714" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
                           </div>
                           <div class="properties-caption properties-caption2">
                             <h3><a href="book-details"><?= $name ?></a></h3>
@@ -299,10 +299,14 @@
                           </div>
                         </div>
                       </div>
+                      <div class="text-center mb-4">
+                        <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
+                      </div>
+                      <input type="hidden" name="name" value="<?= $name ?>">
+                      <input type="hidden" name="price" value="<?= $price ?>">
+                      <!-- <input type="hidden" name="quantity" value="<?= $quantity ?>"> -->
+                      <input type="hidden" name="img_path" value="<?= $img_path ?>">
                     </form>
-                    <div class="text-center mb-4">
-                      <button class="white-btn border-btn border-btn2 " type="submit">Add to Cart</button>
-                    </div>
                   </div>
 
                 <?php endforeach; ?>
@@ -353,13 +357,17 @@
   
   <?php include './inc/scripts.php' ?>
   <script>
-    const forms = document.querySelectorAll('.books')
+    const forms = document.querySelectorAll('.book')
     forms.forEach(form => {
       form.addEventListener('submit', e => {
         e.preventDefault();
-        // fetch('')
-        // .then($res => $res.json())
-        // .then(data = console(done))
+
+        fetch('./req/addCart.php', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then($res => $res.text())
+        .then(data => console.log(data))
       })
     })
   </script>

@@ -1,6 +1,12 @@
 <?php
     require_once './config/DB.php';
+    $db = new DB();
 
+    session_start();
+    $email = isset($_SESSION['email']) ? strtolower(explode('@', $_SESSION['email'])[0]) : '';
+    // echo $email;
+    
+    
 
 ?>
 
@@ -54,67 +60,82 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img src="assets/img/gallery/xbest-books1.jpg.pagespeed.ic.a3LkFxg89O.webp" alt="" data-pagespeed-url-hash="4146589661" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-                      </div>
-                      <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$360.00</h5>
-                  </td>
-                  <td>
-                    <div class="product_count">
-                      <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                      <input class="input-number" type="text" value="1" min="0" max="10">
-                      <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$720.00</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="media">
-                      <div class="d-flex">
-                        <img src="assets/img/gallery/xbest_selling1.jpg.pagespeed.ic.KAl4WKwsoc.webp" alt="" data-pagespeed-url-hash="1552297109" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
-                      </div>
-                      <div class="media-body">
-                        <p>Minimalistic shop for multipurpose use</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$360.00</h5>
-                  </td>
-                  <td>
-                    <div class="product_count">
-                      <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                      <input class="input-number2" type="text" value="1" min="0" max="10">
-                      <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                    </div>
-                  </td>
-                  <td>
-                    <h5>$720.00</h5>
-                  </td>
-                </tr>
+                <?php $results = $db->getCartItems($email); ?>
+                
+                <?php if(!$results->num_rows): ?>
+                  <?php foreach($results as $result): ?>
+                    <?php extract($result); ?>
+                    <tr>
+                      <td>
+                        <div class="media">
+                          <div class="d-flex">
+                            <img src="assets/img/icon/xbest_selling1.jpg.pagespeed.ic.KAl4WKwsoc.webp" alt="" data-pagespeed-url-hash="1552297109" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                          </div>
+                          <div class="media-body">
+                            <p><?= $name ?></p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <h5>$<?= $price ?></h5>
+                      </td>
+                      <td>
+                        <div class="product_count">
+                          <span class="input-number-decrement"> <i class="ti-minus"></i></span>
+                          <input class="input-number2" type="text" value="<?= $quantity ?>" min="0" max="10">
+                          <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <h5>$<?= $price  ?></h5>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                    
+
+                  <?php else: ?>
+                    
+                    <?php foreach($results as $result): ?>
+                    <?php extract($result); ?>
+                    <tr>
+                      <td>
+                        <div class="media">
+                          <div class="d-flex">
+                            <img src="assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="1552297109" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                          </div>
+                          <div class="media-body">
+                            <p><?= $name ?></p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <h5>$<?= $price ?></h5>
+                      </td>
+                      <td>
+                        <div class="product_count">
+                          <span class="input-number-decrement"> <i class="ti-minus"></i></span>
+                          <input class="input-number2" type="text" value="<?= $quantity ?>" min="0" max="10">
+                          <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <h5>$<?= $price  ?></h5>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                    
+                <?php endif; ?>
                 <tr class="bottom_button">
                   <td>
                     <a class="btn" href="#">Update Cart</a>
                   </td>
                   <td></td>
                   <td></td>
-                  <td>
+                  <!-- <td>
                     <div class="cupon_text float-right">
                       <a class="btn" href="#">Close Coupon</a>
                     </div>
-                  </td>
+                  </td> -->
                 </tr>
                 <tr>
                   <td></td>
@@ -123,10 +144,11 @@
                     <h5>Subtotal</h5>
                   </td>
                   <td>
-                    <h5>$2160.00</h5>
+                    <?php $total = $db->getTotalAmount($email); ?>
+                    <h5>$<?= $total ?>.00</h5>
                   </td>
                 </tr>
-                <tr class="shipping_area">
+                <!-- <tr class="shipping_area">
                   <td></td>
                   <td></td>
                   <td>
@@ -170,12 +192,12 @@
                       <a class="btn" href="#">Update Details</a>
                     </div>
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
             <div class="checkout_btn_inner float-right">
-              <a class="btn" href="./categories.php">Continue Shopping</a>
-              <a class="btn checkout_btn" href="./checkout.php">Proceed to checkout</a>
+              <a class="btn" href="./categories">Continue Shopping</a>
+              <a class="btn checkout_btn" href="./checkout">Proceed to checkout</a>
             </div>
           </div>
         </div>

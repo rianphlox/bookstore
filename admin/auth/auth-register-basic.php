@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Register Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Register Basic - Admin </title>
 
     <meta name="description" content="" />
 
@@ -131,12 +131,12 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">Bookstore</span>
                 </a>
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Adventure starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p>
+              <p class="mb-4">Bookstore management. Easy and fun!</p>
 
               <form id="formAuthentication" class="mb-3"  method="POST">
                 <div class="mb-3">
@@ -145,7 +145,7 @@
                     type="text"
                     class="form-control"
                     id="username"
-                    name="username"
+                    name="full_name"
                     placeholder="Enter your username"
                     autofocus
                   />
@@ -212,6 +212,26 @@
 
     <!-- Main JS -->
     <script src="../assets/js/main.js"></script>
+
+    <script>
+      const form = document.querySelector('#formAuthentication')
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch('../req/register.php', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(res => res.json())
+        .then(data => {
+          data.msgClass == 'success' ? window.location.href = './auth-login-basic' : (
+            () => {
+              console.log(data.msg);
+              form.reset()
+            }
+          )
+        })
+      })
+    </script>
 
     <!-- Page JS -->
 

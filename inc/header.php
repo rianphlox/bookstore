@@ -27,6 +27,8 @@
                       <li><a href="#">FAQ</a></li>
                       <li><a href="#">Track Order</a></li>
                       <li class="shopping-card">
+                        <!-- Find this and change the content -->
+                      <!-- .header-area .header-top .header-info-right .shopping-card::before -->
                         <a href="./cart"><img src="assets/img/icon/cart.svg" alt="" data-pagespeed-url-hash="605441959" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
                       </li>
                       <li><a href="./login" class="btn header-btn">Sign in</a></li>

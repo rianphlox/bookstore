@@ -20,7 +20,7 @@
   <title>Book Shop</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/icon/xfavicon.png.pagespeed.ic.OYy94fDeJN.webp">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/style.css">

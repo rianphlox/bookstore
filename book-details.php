@@ -43,13 +43,13 @@
 
                 <div class="single-services d-flex align-items-center mb-0">
                   <div class="features-img">
-                    <img src="assets/img/gallery/xbest-books1.jpg.pagespeed.ic.a3LkFxg89O.webp" alt="" data-pagespeed-url-hash="4146589661" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                    <img src="assets/img/icon/<?= $img_path ?>" alt="" data-pagespeed-url-hash="4146589661" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                   </div>
                   <div class="features-caption">
-                    <h3>The Rage of Dragons</h3>
-                    <p>By Evan Winter</p>
+                    <h3><?= $name ?></h3>
+                    <p>By <?= $author ?></p>
                     <div class="price">
-                      <span>$50.00</span>
+                      <span>$<?= $price ?>.00</span>
                     </div>
                     <div class="review">
                       <div class="rating">
@@ -61,8 +61,8 @@
                       </div>
                       <p>(120 Review)</p>
                     </div>
-                    <a href="#" class="white-btn mr-10">Add to Cart</a>
-                    <a href="#" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a>
+                    <a href="javascript:void(0)" class="white-btn mr-10">Add to Cart</a>
+                    <a href="javascript:void(0)" class="border-btn share-btn"><i class="fas fa-share-alt"></i></a>
                   </div>
                 </div>
               </div>
@@ -145,7 +145,7 @@
 
     <section class="subscribe-area">
       <div class="container">
-        <div class="subscribe-caption text-center  subscribe-padding section-img2-bg" data-background="assets/img/gallery/section-bg1.jpg">
+        <div class="subscribe-caption text-center  subscribe-padding section-img2-bg" data-background="assets/img/icon/section-bg1.jpg">
           <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-9">
               <h3>Join Newsletter</h3>

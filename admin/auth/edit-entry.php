@@ -202,7 +202,8 @@
                           <option value="sci-fi">Sci-fi</option>
                           <option value="romance">Romance</option>
                           <option value="horror">Horror</option>
-                          <option value="Crime">Crime</option>
+                          <option value="crime">Crime</option>
+                          <option value="erotica">Erotica</option>
                         </select>
                       </div>
                       <div class="mb-3">

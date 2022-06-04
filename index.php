@@ -16,7 +16,7 @@ $books = $db->getAllBooks();
   <title>Book Shop</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="https://cutt.ly/kG4ZJXw" />
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />
@@ -128,8 +128,8 @@ $books = $db->getAllBooks();
                       <a href="book-details"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
-                      <p>J. R Rain</p>
+                      <h3><a href="book-details"><?= $name ?></a></h3>
+                      <p><?= $author ?></p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
                           <div class="rating">
@@ -142,7 +142,7 @@ $books = $db->getAllBooks();
                           <p>(<span>120</span> Review)</p>
                         </div>
                         <div class="price">
-                          <span>$50</span>
+                          <span>$<?= $price ?></span>
                         </div>
                       </div>
                     </div>
@@ -1138,7 +1138,7 @@ $books = $db->getAllBooks();
     <section class="container">
       <div class="row align-items-center justify-content-between">
         <div class="col-xl-6 col-lg-6">
-          <div class="wantToWork-area w-padding2 mb-30" data-background="https://preview.colorlib.com/theme/abcbook/assets/img/gallery/wants-bg1.jpg.webp">
+          <div class="wantToWork-area w-padding2 mb-30" data-background="assets/img/icon/wants-bg1.jpg">
             <h2>The History<br />of Phipino</h2>
             <div class="linking">
               <a href="#" class="btn wantToWork-btn">View Details</a>
@@ -1146,7 +1146,7 @@ $books = $db->getAllBooks();
           </div>
         </div>
         <div class="col-xl-6 col-lg-6">
-          <div class="wantToWork-area w-padding2 mb-30" data-background="https://preview.colorlib.com/theme/abcbook/assets/img/gallery/wants-bg2.jpg.webp">
+          <div class="wantToWork-area w-padding2 mb-30" data-background="assets/img/icon/wants-bg2.jpg">
             <h2>Wilma Mumduya</h2>
             <div class="linking">
               <a href="#" class="btn wantToWork-btn">View Details</a>
@@ -1158,7 +1158,7 @@ $books = $db->getAllBooks();
 
     <section class="subscribe-area">
       <div class="container">
-        <div class="subscribe-caption text-center subscribe-padding section-img2-bg" data-background="https://preview.colorlib.com/theme/abcbook/assets/img/gallery/section-bg1.jpg.webp">
+        <div class="subscribe-caption text-center subscribe-padding section-img2-bg" data-background="assets/img/icon/section-bg1.jpg">
           <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-9">
               <h3>Join Newsletter</h3>

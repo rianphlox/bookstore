@@ -195,6 +195,11 @@
                             <option value="romance">Romance</option>
                             <option value="horror">Horror</option>
                             <option value="Crime">Crime</option>
+                            <option value="erotica">Erotica</option>
+                            <option value="erotica">Erotica</option>
+                            <option value="erotica">Erotica</option>
+                            <option value="erotica">Erotica</option>
+
                           </select>
                         </div>
                         <div class="mb-3">

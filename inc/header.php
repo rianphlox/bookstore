@@ -54,7 +54,7 @@
                       <li><a href="./">Home</a></li>
                       <li><a href="./categories">Categories</a></li>
                       <li><a href="./about">About</a></li>
-                      <li><a href="#">Pages</a>
+                      <li><a href="javascript:void(0)">Pages</a>
                         <ul class="submenu">
                           <li><a href="./login">login</a></li>
                           <li><a href="./cart">Cart</a></li>

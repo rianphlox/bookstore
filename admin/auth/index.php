@@ -1,6 +1,6 @@
 <?php
 
-  header('location: tables-basic')
+  // header('location: tables-basic')
 
 ?>
 

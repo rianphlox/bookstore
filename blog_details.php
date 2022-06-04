@@ -11,34 +11,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- <link rel="stylesheet" href="assets/css/notyf.min.css"> -->
 
-  <script nonce="044a8684-6b3e-4c90-abe2-9e37e250968b">
-    (function(w, d) {
-      ! function(a, e, t, r) {
-        a.zarazData = a.zarazData || {}, a.zarazData.executed = [], a.zaraz = {
-          deferred: []
-        }, a.zaraz.q = [], a.zaraz._f = function(e) {
-          return function() {
-            var t = Array.prototype.slice.call(arguments);
-            a.zaraz.q.push({
-              m: e,
-              a: t
-            })
-          }
-        };
-        for (const e of ["track", "set", "ecommerce", "debug"]) a.zaraz[e] = a.zaraz._f(e);
-        a.addEventListener("DOMContentLoaded", (() => {
-          var t = e.getElementsByTagName(r)[0],
-            z = e.createElement(r),
-            n = e.getElementsByTagName("title")[0];
-          for (n && (a.zarazData.t = e.getElementsByTagName("title")[0].text), a.zarazData.w = a.screen.width, a.zarazData.h = a.screen.height, a.zarazData.j = a.innerHeight, a.zarazData.e = a.innerWidth, a.zarazData.l = a.location.href, a.zarazData.r = e.referrer, a.zarazData.k = a.screen.colorDepth, a.zarazData.n = e.characterSet, a.zarazData.o = (new Date).getTimezoneOffset(), a.zarazData.q = []; a.zaraz.q.length;) {
-            const e = a.zaraz.q.shift();
-            a.zarazData.q.push(e)
-          }
-          z.defer = !0, z.referrerPolicy = "origin", z.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(a.zarazData))), t.parentNode.insertBefore(z, t)
-        }))
-      }(w, d, 0, "script");
-    })(window, document);
-  </script>
+
 </head>
 
 <body>
@@ -54,173 +27,8 @@
 
                     <div class="logo">
                       <a href="./">
-                        <script data-pagespeed-no-defer>
-                          //<![CDATA[
-                          (function() {
-                            for (var g = "function" == typeof Object.defineProperties ? Object.defineProperty : function(b, c, a) {
-                                if (a.get || a.set) throw new TypeError("ES3 does not support getters and setters.");
-                                b != Array.prototype && b != Object.prototype && (b[c] = a.value)
-                              }, h = "undefined" != typeof window && window === this ? this : "undefined" != typeof global && null != global ? global : this, k = ["String", "prototype", "repeat"], l = 0; l < k.length - 1; l++) {
-                              var m = k[l];
-                              m in h || (h[m] = {});
-                              h = h[m]
-                            }
-                            var n = k[k.length - 1],
-                              p = h[n],
-                              q = p ? p : function(b) {
-                                var c;
-                                if (null == this) throw new TypeError("The 'this' value for String.prototype.repeat must not be null or undefined");
-                                c = this + "";
-                                if (0 > b || 1342177279 < b) throw new RangeError("Invalid count value");
-                                b |= 0;
-                                for (var a = ""; b;)
-                                  if (b & 1 && (a += c), b >>>= 1) c += c;
-                                return a
-                              };
-                            q != p && null != q && g(h, n, {
-                              configurable: !0,
-                              writable: !0,
-                              value: q
-                            });
-                            var t = this;
-
-                            function u(b, c) {
-                              var a = b.split("."),
-                                d = t;
-                              a[0] in d || !d.execScript || d.execScript("var " + a[0]);
-                              for (var e; a.length && (e = a.shift());) a.length || void 0 === c ? d[e] ? d = d[e] : d = d[e] = {} : d[e] = c
-                            };
-
-                            function v(b) {
-                              var c = b.length;
-                              if (0 < c) {
-                                for (var a = Array(c), d = 0; d < c; d++) a[d] = b[d];
-                                return a
-                              }
-                              return []
-                            };
-
-                            function w(b) {
-                              var c = window;
-                              if (c.addEventListener) c.addEventListener("load", b, !1);
-                              else if (c.attachEvent) c.attachEvent("onload", b);
-                              else {
-                                var a = c.onload;
-                                c.onload = function() {
-                                  b.call(this);
-                                  a && a.call(this)
-                                }
-                              }
-                            };
-                            var x;
-
-                            function y(b, c, a, d, e) {
-                              this.h = b;
-                              this.j = c;
-                              this.l = a;
-                              this.f = e;
-                              this.g = {
-                                height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
-                                width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
-                              };
-                              this.i = d;
-                              this.b = {};
-                              this.a = [];
-                              this.c = {}
-                            }
-
-                            function z(b, c) {
-                              var a, d, e = c.getAttribute("data-pagespeed-url-hash");
-                              if (a = e && !(e in b.c))
-                                if (0 >= c.offsetWidth && 0 >= c.offsetHeight) a = !1;
-                                else {
-                                  d = c.getBoundingClientRect();
-                                  var f = document.body;
-                                  a = d.top + ("pageYOffset" in window ? window.pageYOffset : (document.documentElement || f.parentNode || f).scrollTop);
-                                  d = d.left + ("pageXOffset" in window ? window.pageXOffset : (document.documentElement || f.parentNode || f).scrollLeft);
-                                  f = a.toString() + "," + d;
-                                  b.b.hasOwnProperty(f) ? a = !1 : (b.b[f] = !0, a = a <= b.g.height && d <= b.g.width)
-                                } a && (b.a.push(e),
-                                b.c[e] = !0)
-                            }
-                            y.prototype.checkImageForCriticality = function(b) {
-                              b.getBoundingClientRect && z(this, b)
-                            };
-                            u("pagespeed.CriticalImages.checkImageForCriticality", function(b) {
-                              x.checkImageForCriticality(b)
-                            });
-                            u("pagespeed.CriticalImages.checkCriticalImages", function() {
-                              A(x)
-                            });
-
-                            function A(b) {
-                              b.b = {};
-                              for (var c = ["IMG", "INPUT"], a = [], d = 0; d < c.length; ++d) a = a.concat(v(document.getElementsByTagName(c[d])));
-                              if (a.length && a[0].getBoundingClientRect) {
-                                for (d = 0; c = a[d]; ++d) z(b, c);
-                                a = "oh=" + b.l;
-                                b.f && (a += "&n=" + b.f);
-                                if (c = !!b.a.length)
-                                  for (a += "&ci=" + encodeURIComponent(b.a[0]), d = 1; d < b.a.length; ++d) {
-                                    var e = "," + encodeURIComponent(b.a[d]);
-                                    131072 >= a.length + e.length && (a += e)
-                                  }
-                                b.i && (e = "&rd=" + encodeURIComponent(JSON.stringify(B())), 131072 >= a.length + e.length && (a += e), c = !0);
-                                C = a;
-                                if (c) {
-                                  d = b.h;
-                                  b = b.j;
-                                  var f;
-                                  if (window.XMLHttpRequest) f =
-                                    new XMLHttpRequest;
-                                  else if (window.ActiveXObject) try {
-                                    f = new ActiveXObject("Msxml2.XMLHTTP")
-                                  } catch (r) {
-                                    try {
-                                      f = new ActiveXObject("Microsoft.XMLHTTP")
-                                    } catch (D) {}
-                                  }
-                                  f && (f.open("POST", d + (-1 == d.indexOf("?") ? "?" : "&") + "url=" + encodeURIComponent(b)), f.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), f.send(a))
-                                }
-                              }
-                            }
-
-                            function B() {
-                              var b = {},
-                                c;
-                              c = document.getElementsByTagName("IMG");
-                              if (!c.length) return {};
-                              var a = c[0];
-                              if (!("naturalWidth" in a && "naturalHeight" in a)) return {};
-                              for (var d = 0; a = c[d]; ++d) {
-                                var e = a.getAttribute("data-pagespeed-url-hash");
-                                e && (!(e in b) && 0 < a.width && 0 < a.height && 0 < a.naturalWidth && 0 < a.naturalHeight || e in b && a.width >= b[e].o && a.height >= b[e].m) && (b[e] = {
-                                  rw: a.width,
-                                  rh: a.height,
-                                  ow: a.naturalWidth,
-                                  oh: a.naturalHeight
-                                })
-                              }
-                              return b
-                            }
-                            var C = "";
-                            u("pagespeed.CriticalImages.getBeaconData", function() {
-                              return C
-                            });
-                            u("pagespeed.CriticalImages.Run", function(b, c, a, d, e, f) {
-                              var r = new y(b, c, a, e, f);
-                              x = r;
-                              d && w(function() {
-                                window.setTimeout(function() {
-                                  A(r)
-                                }, 0)
-                              })
-                            });
-                          })();
-
-                          pagespeed.CriticalImages.Run('/mod_pagespeed_beacon', 'https://preview.colorlib.com/theme/abcbook/blog.html', '-ilGEe-FWC', true, false, 'z6kANXCoDv0');
-                          //]]>
-                        </script><img src="data:image/webp;base64,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" alt="" data-pagespeed-url-hash="3800066785" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                        <?php include './inc/_header.php' ?>
+                        <img src="assets\img\icon\abcbook.jpg">
                       </a>
                     </div>
 
@@ -272,7 +80,7 @@
                         </ul>
                       </li>
                       <li><a href="blog.html">Blog</a></li>
-                      <li><a href="contact.html">Contect</a></li>
+                      <li><a href="contact.html">Contact</a></li>
                     </ul>
                   </nav>
                 </div>

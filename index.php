@@ -1,8 +1,9 @@
 <?php
-require './config/DB.php';
+  session_start();
 
-$db = new DB();
-$books = $db->getAllBooks();
+  require './config/DB.php';
+  $db = new DB();
+  $books = $db->getAllBooks();
 
 
 ?>
@@ -99,10 +100,10 @@ $books = $db->getAllBooks();
                 <!-- <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
                     </div>
                     <div class="properties-caption">
-                      <h3><a href="book-details"><?= $name ?></a></h3>
+                      <h3><a href="book-details?id=<?=$id?>"><?= $name ?></a></h3>
                       <p><?= $author ?></p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -125,10 +126,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\<?= $img_path ?>" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details"><?= $name ?></a></h3>
+                      <h3><a href="book-details?id=<?=$id?>"><?= $name ?></a></h3>
                       <p><?= $author ?></p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -193,7 +194,7 @@ $books = $db->getAllBooks();
                         </div>
                         <p>(120 Review)</p>
                       </div>
-                      <a href="book-details" class="border-btn">View Details</a>
+                      <a href="book-details?id=<?=$id?>" class="border-btn">View Details</a>
                     </div>
                   </div>
 
@@ -218,7 +219,7 @@ $books = $db->getAllBooks();
                         </div>
                         <p>(120 Review)</p>
                       </div>
-                      <a href="book-details" class="border-btn">View Details</a>
+                      <a href="book-details?id=<?=$id?>" class="border-btn">View Details</a>
                     </div>
                   </div>
                 </div>
@@ -265,10 +266,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling3.jpg" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\xbest_selling3.jpg" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -293,10 +294,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling5.jpg" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\xbest_selling5.jpg" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -321,10 +322,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling1.jpg" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\xbest_selling1.jpg" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -350,10 +351,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling2.jpg" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\xbest_selling2.jpg" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -378,12 +379,12 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details">
+                      <a href="book-details?id=<?=$id?>">
                         <img src="assets\img\icon\xbest_selling8.jpg" alt="" />
                       </a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -408,12 +409,12 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details">
+                      <a href="book-details?id=<?=$id?>">
                         <img src="assets\img\icon\xbest_selling9.jpg" alt="" />
                       </a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -442,10 +443,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -470,10 +471,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -498,10 +499,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -526,10 +527,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -554,10 +555,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets\img\icon\xbest_selling1.jpg" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets\img\icon\xbest_selling1.jpg" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -582,10 +583,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -614,10 +615,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -642,10 +643,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -670,10 +671,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -698,10 +699,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -726,10 +727,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -754,10 +755,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -786,10 +787,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -814,10 +815,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -842,10 +843,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -870,10 +871,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -898,10 +899,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -926,10 +927,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -958,10 +959,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling7.jpg.pagespeed.ic.6FdDS-wiEO.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -986,10 +987,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling8.jpg.pagespeed.ic.CAenHirwAq.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -1014,10 +1015,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling6.jpg.pagespeed.ic.oDhUaG4AKa.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -1042,10 +1043,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling4.jpg.pagespeed.ic.CkpIchNcgs.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -1070,10 +1071,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling9.jpg.pagespeed.ic.xDZdNrhC_d.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">
@@ -1098,10 +1099,10 @@ $books = $db->getAllBooks();
                 <div class="properties pb-30">
                   <div class="properties-card">
                     <div class="properties-img">
-                      <a href="book-details"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
+                      <a href="book-details?id=<?=$id?>"><img src="assets/img/gallery/xbest_selling2.jpg.pagespeed.ic.wJjzQ8gcEX.webp" alt="" /></a>
                     </div>
                     <div class="properties-caption properties-caption2">
-                      <h3><a href="book-details">Moon Dance</a></h3>
+                      <h3><a href="book-details?id=<?=$id?>">Moon Dance</a></h3>
                       <p>J. R Rain</p>
                       <div class="properties-footer d-flex justify-content-between align-items-center">
                         <div class="review">

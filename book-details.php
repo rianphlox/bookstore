@@ -1,6 +1,6 @@
 <?php
 
-    require_once './config/DB.php';
+    require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
 
     $db = new DB();
     $id = $db->conn->real_escape_string($_GET['id']);
@@ -99,7 +99,7 @@
 
             <div class="row">
               <div class="offset-xl-1 col-lg-9">
-                <p><?= $book['about'];  ?></p>
+                <p><?= $about;  ?></p>
                 
               </div>
             </div>

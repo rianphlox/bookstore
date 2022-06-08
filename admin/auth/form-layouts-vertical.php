@@ -109,7 +109,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Add Book Entry</h4>
 
 
               <!-- Basic Layout -->
@@ -195,10 +195,10 @@
                             <option value="romance">Romance</option>
                             <option value="horror">Horror</option>
                             <option value="Crime">Crime</option>
-                            <option value="erotica">Erotica</option>
-                            <option value="erotica">Erotica</option>
-                            <option value="erotica">Erotica</option>
-                            <option value="erotica">Erotica</option>
+                            <option value="business">Business</option>
+                            <option value="astrology">Astrolgy</option>
+                            <option value="history">History</option>
+                            <option value="biography">Biography</option>
 
                           </select>
                         </div>
@@ -208,6 +208,11 @@
                             <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span>
                             <textarea name="about" id="basic-icon-default-message" class="form-control" placeholder="Write something about the book.." aria-label="" aria-describedby="basic-icon-default-message2"></textarea>
                           </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <input type="file" class="form-control" id="inputGroupFile02" />
+                          <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
                       </form>
@@ -252,7 +257,7 @@
 
 
     <!-- Page JS -->
-    
+
     <script src="../assets/js/ui-toasts.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
@@ -262,10 +267,13 @@
       form.onsubmit = function(e) {
         e.preventDefault();
         fetch('../req/add.php', {
-          method:  'POST',
-          body: new FormData(form)
-        }).then(res => res.json())
-        .then(data => {console.log(data); form.reset()})
+            method: 'POST',
+            body: new FormData(form)
+          }).then(res => res.json())
+          .then(data => {
+            console.log(data);
+            form.reset()
+          })
       }
     </script>
   </body>

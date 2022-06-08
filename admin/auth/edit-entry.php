@@ -203,7 +203,10 @@
                           <option value="romance">Romance</option>
                           <option value="horror">Horror</option>
                           <option value="crime">Crime</option>
-                          <option value="erotica">Erotica</option>
+                          <option value="business">Business</option>
+                          <option value="astrology">Astrolgy</option>
+                          <option value="history">History</option>
+                          <option value="biography">biography</option>
                         </select>
                       </div>
                       <div class="mb-3">
@@ -215,6 +218,10 @@
                       </div>
                       <input type="hidden" name="updated_id" value="<?= $userId ?>">
                       
+                      <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" />
+                        <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
+                      </div>
                       <button type="submit" name="submit" class="btn btn-primary">Send</button>
                     </form>
                   </div>

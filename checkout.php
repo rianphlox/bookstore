@@ -189,9 +189,10 @@
                   
                 </ul>
                 <ul class="list list_2">
-                  <?php $total = $db->getTotalAmount($email) ; ?>
+                  <!-- <?php $total = $db->getTotalAmount($email) ; ?> -->
+                  <!-- <?php $total == 1 ? : '' ?> -->
                   <li>
-                    <a href="javascript:void(0);">Subtotal <span>$<?= $total ?>.00</span></a>
+                    <a href="javascript:void(0);">Subtotal <span>$<?= $db->getTotalAmount($email)  ? $db->getTotalAmount($email) : '0' ?>.00</span></a>
                   </li>
                   <li>
                     <a href="javascript:void(0);">Total<span>$<?= $total ?>.00</span>

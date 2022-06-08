@@ -31,7 +31,12 @@
                       <!-- .header-area .header-top .header-info-right .shopping-card::before -->
                         <a href="./cart"><img src="assets/img/icon/cart.svg" alt="" data-pagespeed-url-hash="605441959" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
                       </li>
-                      <li><a href="./login" class="btn header-btn">Sign in</a></li>
+                      <?php if( !isset($_SESSION['email']) ):  ?>
+                        <li><a href="./login" class="btn header-btn">Sign in</a></li>
+
+                        <?php else: ?>
+                          <li><a href="logout" class="btn header-btn">Log out</a></li>
+                      <?php endif; ?>
                     </ul>
                   </div>
                 </div>
@@ -59,7 +64,7 @@
                           <li><a href="./login">login</a></li>
                           <li><a href="./cart">Cart</a></li>
                           <li><a href="./checkout">Checkout</a></li>
-                          <li><a href="./book-details">book Details</a></li>
+                          <!-- <li><a href="./book-details">book Details</a></li> -->
                           <li><a href="./blog_details">Blog Details</a></li>
                           <li><a href="./elements">Element</a></li>
                         </ul>

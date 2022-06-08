@@ -1,3 +1,8 @@
+            <?php if ($_SERVER['PHP_SELF']) {
+              // echo $_SERVER['PHP_SELF'];
+              $script_name = explode('.php', explode('/', $_SERVER['PHP_SELF'])[4])[0];
+            }  ?>
+
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="./" class="app-brand-link">
@@ -155,21 +160,21 @@
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Layouts">Form Layouts</div>
               </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
+              <ul class="menu-sub active">
+                <li class="menu-item <?= $script_name == 'form-layouts-vertical' ? 'active' : '' ?>">
                   <a href="form-layouts-vertical" class="menu-link">
-                    <div data-i18n="Vertical Form">Vertical Form</div>
+                    <div data-i18n="Vertical Form">Add Book Entry</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a href="form-layouts-horizontal" class="menu-link">
                     <div data-i18n="Horizontal Form">Horizontal Form</div>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
             <!-- Tables -->
-            <li class="menu-item active">
+            <li class="menu-item <?= $script_name == 'tables-basic' ? 'active' : '' ?>">
               <a href="tables-basic" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables">Tables</div>

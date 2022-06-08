@@ -1,3 +1,40 @@
+<?php
+    require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
+    $db = new DB();
+    
+    $msg = "";
+    $msgClass =  '';
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']) ) {
+        
+
+        // print_r($_POST);
+        $full_name = $_POST['full_name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $full_name = htmlentities(trim($full_name));
+        $email = htmlentities(trim($email));
+        $password = htmlentities(trim($password));
+
+        $res = $db->CreateUser($full_name, $email, $password);
+        // json_encode($res);
+        
+        // json_decode($res);
+        if ($res['msgClass'] == 'success') { 
+          header('location: ./login');
+        } else {
+          // $msg = '';
+          // $msgClass = '';
+          header('location: ./register?signup=error');
+        }
+
+    }
+
+
+?>
+
+
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -28,7 +65,7 @@
           <p>Create your account to get full access</p>
         </div>
 
-        <form id="register">
+        <form id="register" method="POST" action="<?= htmlentities($_SERVER['PHP_SELF']) ?>">
           <div class="input-box">
             <div class="single-input-fields">
               <label>Full name</label>
@@ -45,7 +82,7 @@
 
             <div class="register-footer">
               <p> Already have an account? <a href="./login"> Login</a> here</p>
-              <button role="submit" class="submit-btn3">Sign Up</button>
+              <button role="submit" name="submit" class="submit-btn3">Sign Up</button>
             </div>
 
           </div>
@@ -58,9 +95,9 @@
 
 
   <?php include './inc/scripts.php' ?>
-  <script>
+  <!-- <script>
     const notyf=new Notyf,form=document.querySelector("#register");form.onsubmit=(e=>{e.preventDefault(),fetch("./req/register.php",{method:"POST",body:new FormData(form)}).then(e=>e.json()).then(e=>{"success"==e.msgClass?notyf.success({message:e.msg,duration:3e3,position:{x:"right",y:"top"}}):notyf.error({message:e.msg,duration:3e3,position:{x:"right",y:"top"}})})});
-  </script>
+  </script> -->
 </body>
 
 </html>

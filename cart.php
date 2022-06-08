@@ -23,7 +23,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
 
   <link rel="stylesheet" href="assets/css/nv.css" />
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/sx.css" />
 
 </head>
 

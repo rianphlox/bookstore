@@ -283,10 +283,11 @@
 
                 } else {
                     // add to cart
-                    $query = "INSERT INTO $table (name, price, quantity, img_path) VALUES ( ? ? ? ?);";
-                    $stmt = $this->conn->prepare($sql);
-                    $stmt->bind_param('ssis', $name, $price, $quantity, $img_path);
-                    if ($stmt->execute()) {
+                    // $query = "INSERT INTO $table (name, price, quantity, img_path) VALUES (?, ?, ?, ?)";
+                    $query = "INSERT INTO $table (name, price, quantity, img_path) VALUES ($name, $price, $quantity, $img_path)";
+                    // $stmt = $this->conn->prepare($sql);
+                    // $stmt->bind_param('ssis', $name, $price, $quantity, $img_path);
+                    if ($this->conn->query($sql)) {
                         return ['msg' => 'Item added to cart!' , 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
                     }
                 }

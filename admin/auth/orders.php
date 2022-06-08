@@ -1,4 +1,9 @@
 <?php
+
     require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
     $db = new DB();
-    // echo ;
+    $conn = $db->conn;
+    // $sql = "select * from orders ";
+
+    $sql = "insert into ";
+?>

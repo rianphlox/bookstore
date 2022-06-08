@@ -10,7 +10,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
 
     <link rel="stylesheet" href="assets/css/A.bootstrap.min.css+owl.carousel.min.css+slicknav.css+animate.min.css+price_rangs.css+magnific-popup.css+fontawesome-all.min.css+themify-icons.css+slick.css+nice-select.css,Mcc.t4sS_3xQnX.css.pagespeed.cf.rBbHLQ6N_H.css" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="assets/css/sx.css" />
 
 </head>
 

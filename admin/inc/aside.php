@@ -137,7 +137,7 @@
             <!-- Forms & Tables -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
             <!-- Forms -->
-            <li class="menu-item">
+            <li class="menu-item ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Elements">Form Elements</div>
@@ -160,9 +160,9 @@
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Form Layouts">Form Layouts</div>
               </a>
-              <ul class="menu-sub active">
+              <ul class="menu-sub active open">
                 <li class="menu-item <?= $script_name == 'form-layouts-vertical' ? 'active' : '' ?>">
-                  <a href="form-layouts-vertical" class="menu-link">
+                  <a href="add-entry" class="menu-link">
                     <div data-i18n="Vertical Form">Add Book Entry</div>
                   </a>
                 </li>
@@ -174,8 +174,8 @@
               </ul>
             </li>
             <!-- Tables -->
-            <li class="menu-item <?= $script_name == 'tables-basic' ? 'active' : '' ?>">
-              <a href="tables-basic" class="menu-link">
+            <li class="menu-item <?= $script_name == 'stock' ? 'active open' : '' ?>">
+              <a href="stock" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables">Tables</div>
               </a>

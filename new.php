@@ -1,7 +1,7 @@
 <?php
-    require './config/DB.php';
-    $db = new DB();
-    $books = $db->getAllBooks();
+require $_SERVER['DOCUMENT_ROOT'] . "/bookstore/config/DB.php";
+$db = new DB();
+$books = $db->getAllBooks();
 
 ?>
 
@@ -17,8 +17,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://cutt.ly/kG4ZJXw" />
 
     <link rel="stylesheet" href="assets/css/nv.css" />
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="assets/css/sx.css" />
-    <link rel="stylesheet" href="assets/css/style.css">
     <?php include './inc/headscript.php' ?>
 </head>
 
@@ -172,7 +172,7 @@
                     <div class="col-xl-12">
                         <div class="selling-active">
 
-                            <?php foreach ($books as $book): ?>
+                            <?php foreach ($books as $book) : ?>
                                 <?php extract($book) ?>
                                 <div class="properties pb-20">
                                     <div class="properties-card">
@@ -201,10 +201,10 @@
                                     </div>
                                 </div>
 
-                            <?php endforeach;?>
+                            <?php endforeach; ?>
 
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -1336,6 +1336,7 @@
 
 
     <?php include './inc/scripts.php' ?>
+    
 </body>
 
 </html>

@@ -30,10 +30,11 @@
             $stmt->fetch();
             if ($id) {
                 // item in cart
-                $query = "UPDATE $tableName SET `quantity` = 1 WHERE `$tableName`.`id` = 2";
-                if ($db->conn->query($query)) {
-                    echo "cart updated";
-                }
+                // $query = "UPDATE $tableName SET `quantity` = 1 WHERE `$tableName`.`id` = 2";
+                // if ($db->conn->query($query)) {
+                //     echo "cart updated";
+                // }
+                echo json_encode(['msg' => 'Book already in cart', 'msgClass' => 'error', 'secondMsgClass' => '#fb3']);
             } else {
                 // add to cart
                 $sql = "INSERT INTO $tableName (`name`, `price`, `quantity`, `img_path`) VALUES ( ?, ?, ?, ?)";

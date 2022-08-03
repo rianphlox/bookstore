@@ -1,7 +1,6 @@
 <?php
     session_start();
-    
-    require_once './config/DB.php';
+    require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
 
     $db = new DB();
     $books = $db->getAllBooks();
@@ -17,11 +16,12 @@
   <title>Book Shop</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/xfavicon.png">
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />
-  <link rel="stylesheet" href="assets/css/notyf.min.css">
+  <!-- <link rel="stylesheet" href="assets/css/notyf.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
 
   <?php include './inc/headscript.php' ?>
@@ -277,20 +277,58 @@
   <div id="back-top">
     <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
   </div>
-  
+
   <?php include './inc/scripts.php' ?>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+ 
   <script>
+    <?php
+        if (isset($_SESSION['email'])) {
+          echo "let active = true;";
+        } else {
+          echo "let active = false;";
+        }
+
+    ?>
+    console.log(active)
+    const notyf = new Notyf();
     const forms = document.querySelectorAll('.book')
     forms.forEach(form => {
       form.addEventListener('submit', e => {
         e.preventDefault();
-
+        if (active == false) {
+          window.location.href = './login'
+        }
+        
         fetch('./req/addCart.php', {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then($res => $res.text())
-        .then(data => console.log(data))
+            method: 'POST',
+            body: new FormData(form)
+          })
+          .then($res => $res.json())
+          .then(data => {
+            if (data.msgClass == 'success') {
+              notyf.success({
+                message: data.msg,
+                duration: 3000,
+                position: {
+                  x: 'right',
+                  y: 'top',
+                },
+                dismissible: true
+              })
+            } else if (data.msgClass == 'error') {
+              notyf.error({
+                message: data.msg,
+                duration: 3000,
+                position: {
+                  x: 'right',
+                  y: 'top',
+                },
+                dismissible: true
+              })
+            }
+          })
       })
     })
   </script>

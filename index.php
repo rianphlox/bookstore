@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  require './config/DB.php';
+  require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
   $db = new DB();
   $books = $db->getAllBooks();
 
@@ -17,7 +17,7 @@
   <title>Book Shop</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/favicon.jpg">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/icon/xfavicon.png">
 
   <link rel="stylesheet" href="assets/css/nv.css" />
   <link rel="stylesheet" href="assets/css/sx.css" />

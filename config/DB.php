@@ -153,59 +153,12 @@
             $stmt->execute();
         }
 
-        // public function addToCart($userEmail, $name, $price, $quantity, $img_path) {
-        //     if (!$userEmail) {
-        //         $query = "SELECT id FROM cart WHERE name = ?";
-        //         $stmt = $this->conn->prepare($query);
-        //         $stmt->bind_param('s', $name);
-        //         $stmt->execute();
-        //         $stmt->bind_result($id);
-        //         $stmt->fetch();
-                
-        //         if (!$id) {
-        //             // $query = "INSERT INTO cart (image_name, image_path, current_price, quantity) VALUES (?, ?, ?, ?)";
-        //             $query ="INSERT INTO cart (name, price, quantity, img_path) VALUES (?, ?, ?, ?)";
-        //             $stmt = $this->conn->prepare($query);
-        //             $stmt->bind_param('ssis', $name, $price, $quantity, $img_path);
-        //             if ($stmt->execute()) {
-        //                 return ['msg' => 'Item added to cart!' , 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
-        //             }
-        //         } else {
-        //             // return ['msg' => 'Item already in cart!', 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
-        //             return ['msg' => 'Item already in cart!' , 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
-        //         }
-        //     } else {
-        //         $tablename = "{$userEmail}_cart" ;
-        //         // check if item already in cart
-        //         $query = "SELECT id FROM $tablename WHERE image_name = ?";
-        //         $stmt = $this->conn->prepare($query);
-        //         $stmt->bind_param('s', $image_name);
-        //         $stmt->execute();
-        //         $stmt->bind_result($id);
-        //         $stmt->fetch();
-        //         if (!$id) {
-        //             // product not in users cart
-        //             // $query = "INSERT INTO $tablename (image_name, image_path, current_price, quantity) VALUES (?, ?, ?, ?)";
-        //             $query ="INSERT INTO $tablename (name, price, quantity, img_path) VALUES (?, ?, ?, ?)";
-        //             $stmt = $this->conn->prepare($query);
-        //             $stmt->bind_param('ssis', $name, $price, $quantity, $img_path);
-        //             if ($stmt->execute()) {
-        //                 return ['msg' => 'Item added to cart!' , 'msgClass' => 'success', 'secondMsgClass' => '#00c851'];
-        //             }
-        //         } else {
-        //             // product already in users cart
-        //             return ['msg' => 'Item already in cart!' , 'msgClass' => 'error', 'secondMsgClass' => '#fb3'];
-        //         }
-        //     }
-        // }
 
         public function getCartItems($userEmail) {
             if (!$userEmail) {
                 // get products from general cart
-                $query = "SELECT * FROM cart";
-                $stmt = $this->conn->prepare($query);
-                $stmt->execute();
-                return $stmt->get_result();
+                
+                return json_encode(['msg' => 'No product in cart', 'msgClass' => 'error']);
             } else {
                 $tablename = "{$userEmail}_cart";
                 $query = "SELECT * FROM $tablename";

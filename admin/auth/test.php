@@ -1,44 +1,48 @@
 <?php
-        require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
-        $db = new DB();
-        $conn = $db->conn;
 
-        if (isset($_GET['id'])) {
-          $userId = $conn->real_escape_string($_GET['id']);
-          $sql = "select * from bookstore where id = ?";
-          $stmt = $conn->prepare($sql);
-          $stmt->bind_param('i', $userId);
-          $stmt->execute();
-          $book = $stmt->get_result()->fetch_assoc();
-          extract($book);
+    require $_SERVER['DOCUMENT_ROOT']. "/bookstore/config/DB.php";
+    $db = new DB();
+    
+    if (isset($_POST['submit'])) {
+        $target = $_SERVER['DOCUMENT_ROOT']. "/bookstore/assets/img/icon/".basename($_FILES['image']['name']);
+        $bookname = $_POST['bookname'];
+        $author = $_POST['author'];
+        $price = $_POST['price'];
+        $quantity = $_POST['quantity'];
+        $category = $_POST['category'];
+        $about = $_POST['about'];
+        $image = $_FILES['image']['name'];
 
+    if (!empty($bookname) && !empty($author) && !empty($price) && !empty($category) && !empty($about)) {
+        // first sanitize
+        // foreach($args as $arg) {
+        //     $arg = $this->sanitize($arg);
+        // }
+        // check if book already exists
+        $sql = "select id from bookstore where name = ?";
+        $stmt = $db->conn->prepare($sql);
+        $stmt->bind_param('s', $bookname);
+        $stmt->execute();
+        $stmt->bind_result($id);
+        $stmt->fetch();
+        if (!$id) {
+            $sql = "INSERT INTO `bookstore` (`name`, `price`, `quantity`, `category`, `author`, `about`, `img_path`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $db->conn->prepare($sql);
+            $stmt->bind_param('sssisss', $bookname, $price, $author, $quantity, $category, $about, $image);
+            if ($stmt->execute()) {
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $target))  {
+                    // echo 'New book listing Added';
+                    header('location: stock');
+                }
+            }
         } else {
-          header('location: tables-basic');
+            echo 'Book with that name exists! Contact support';
         }
 
-        if (isset($_POST['submit'])) {
-          $bookname = $_POST['bookname'];
-          $author = $_POST['author'];
-          $price = $_POST['price'];
-          $quantity = $_POST['quantity'];
-          $category = $_POST['category'];
-          $about = $_POST['about'];
-          $updated_id = (int)$_POST['updated_id'];
-      
-          
-          $sql = "UPDATE `bookstore` SET `name` = ?, price = ?, author = ?, quantity = ?, category = ?, about = ? WHERE `bookstore`.`id` = ?";
-          // $sql = "UPDATE `bookstore` SET `name` = 'Rain Falling', `price` = '37', `author` = 'Fischer Ryan', `quantity` = '12', `category` = 'crime', `about` = 'Nothing Much. Really!' WHERE `bookstore`.`id` = 2";
-          $stmt = $conn->prepare($sql);
-          $stmt->bind_param('sssissi', $bookname, $price, $author, $quantity, $category, $about, $updated_id);
-          if ($stmt->execute()) {
-            header('location: stock?edit=true');
-          }
-          
-      }
-        
-
-
-        
+    } else {
+        echo 'Please fill in all fields.';
+    }
+    }
 
 ?>
 
@@ -80,7 +84,7 @@
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               <!-- Place this tag where you want the button to render. -->
               <li class="nav-item lh-1 me-3">
-                <a class="github-button" href="" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                <a class="github-button" href="javascript:void(0)" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
               </li>
 
               <!-- User -->
@@ -153,32 +157,68 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Edit Entry</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Add Book Entry</h4>
 
 
             <!-- Basic Layout -->
             <div class="row">
-              
+              <!-- <div class="col-xl">
+                <div class="card mb-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Basic Layout</h5>
+                    <small class="text-muted float-end">Default label</small>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">Full Name</label>
+                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-default-company">Company</label>
+                        <input type="text" class="form-control" id="basic-default-company" placeholder="ACME Inc." />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-default-email">Email</label>
+                        <div class="input-group input-group-merge">
+                          <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" />
+                          <span class="input-group-text" id="basic-default-email2">@example.com</span>
+                        </div>
+                        <div class="form-text">You can use letters, numbers & periods</div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-default-phone">Phone No</label>
+                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label" for="basic-default-message">Message</label>
+                        <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                  </div>
+                </div>
+              </div> -->
               <div class="col-sm-12 col-md-8 col-xl-6 mx-auto">
                 <div class="card mb-4">
                   <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Edit Book Entry</h5>
+                    <h5 class="mb-0">Add A Book</h5>
                     <small class="text-muted float-end">Enter book details</small>
                   </div>
                   <div class="card-body">
-                    <form id="edit" method="POST" action="<?= htmlentities($_SERVER['PHP_SELF']) ?>">
+                    <form id="add" method="POST" enctype="multipart/form-data" action="<?= $_SERVER['PHP_SELF'] ?>">
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-fullname">Book Name</label>
                         <div class="input-group input-group-merge">
                           <span id="basic-icon-default-bookname2" class="input-group-text"><i class="bx bx-user"></i></span>
-                          <input type="text" name="bookname" class="form-control" id="basic-icon-default-bookname" value="<?= $name ?>" aria-label="John Doe" aria-describedby="basic-icon-default-bookname2" />
+                          <input type="text" name="bookname" class="form-control" id="basic-icon-default-bookname" placeholder="Sleep Den" aria-label="John Doe" aria-describedby="basic-icon-default-bookname2" />
                         </div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-author">Author</label>
                         <div class="input-group input-group-merge">
                           <span id="basic-icon-default-author2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                          <input type="text" name="author" id="basic-icon-default-author" class="form-control" value="<?= $author ?>" aria-label="James Billy" aria-describedby="basic-icon-default-author2" />
+                          <input type="text" name="author" id="basic-icon-default-author" class="form-control" placeholder="Billy James" aria-label="James Billy" aria-describedby="basic-icon-default-author2" />
                         </div>
                       </div>
 
@@ -186,14 +226,14 @@
                         <label class="form-label" for="basic-icon-default-price">Price</label>
                         <div class="input-group input-group-merge">
                           <span id="basic-icon-default-price" class="input-group-text"><i class="bx bx-dollar "></i></span>
-                          <input type="number" name="price" id="basic-icon-default-price" class="form-control phone-mask" value="<?= $price ?>" aria-label="69.99" aria-describedby="basic-icon-default-phone2" />
+                          <input type="number" name="price" id="basic-icon-default-price" class="form-control phone-mask" placeholder="69.99" aria-label="69.99" aria-describedby="basic-icon-default-phone2" />
                         </div>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-quantity">Quantity</label>
                         <div class="input-group input-group-merge">
                           <span id="basic-icon-default-quantity" class="input-group-text"><i class="bx bx-trending-up"></i></span>
-                          <input type="number" name="quantity" id="basic-icon-default-quantity" class="form-control phone-mask" value="<?= $quantity ?>" aria-label="5" aria-describedby="basic-icon-default-quantity" />
+                          <input type="number" name="quantity" id="basic-icon-default-quantity" class="form-control phone-mask" placeholder="5" aria-label="5" aria-describedby="basic-icon-default-quantity" />
                         </div>
                       </div>
                       <div class="mb-3">
@@ -202,27 +242,27 @@
                           <option value="sci-fi">Sci-fi</option>
                           <option value="romance">Romance</option>
                           <option value="horror">Horror</option>
-                          <option value="crime">Crime</option>
+                          <option value="Crime">Crime</option>
                           <option value="business">Business</option>
-                          <option value="astrology">Astrology</option>
+                          <option value="astrology">Astrolgy</option>
                           <option value="history">History</option>
-                          <option value="biography">biography</option>
+                          <option value="biography">Biography</option>
+
                         </select>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="basic-icon-default-message">About</label>
                         <div class="input-group input-group-merge">
                           <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span>
-                          <textarea name="about" id="basic-icon-default-message" class="form-control" aria-label="" aria-describedby="basic-icon-default-message2"><?= $about ?></textarea>
+                          <textarea name="about" id="basic-icon-default-message" class="form-control" placeholder="Write something about the book.." aria-label="" aria-describedby="basic-icon-default-message2"></textarea>
                         </div>
                       </div>
-                      <input type="hidden" name="updated_id" value="<?= $userId ?>">
-                      
+
                       <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02" />
+                        <input type="file" name="image" class="form-control" id="inputGroupFile02" />
                         <!-- <label class="input-group-text" for="inputGroupFile02">Upload</label> -->
                       </div>
-                      <button type="submit" name="submit" class="btn btn-primary">Send</button>
+                      <button name="submit" type="submit" class="btn btn-primary">Send</button>
                     </form>
                   </div>
                 </div>
@@ -265,12 +305,25 @@
 
 
   <!-- Page JS -->
-  
+
   <script src="../assets/js/ui-toasts.js"></script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  
+  <!-- <script>
+    const form = document.querySelector('#add')
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      fetch('../req/add.php', {
+          method: 'POST',
+          body: new FormData(form)
+        }).then(res => res.json())
+        .then(data => {
+          console.log(data);
+          form.reset()
+        })
+    }
+  </script> -->
 </body>
 
 </html>

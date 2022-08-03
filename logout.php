@@ -1,6 +1,6 @@
 <?php
-
     session_start();
-    session_unset();
-    // session_destroy();
-    header('location : ./');
+    if (isset($_SESSION)) {
+        session_unset();
+        header('location: ./');
+    }

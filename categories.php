@@ -283,14 +283,8 @@
 
  
   <script>
-    <?php
-        if (isset($_SESSION['email'])) {
-          echo "let active = true;";
-        } else {
-          echo "let active = false;";
-        }
-
-    ?>
+    <?= isset($_SESSION['email']) ? "let active = true;" : "let active = false;" ?>
+    
     console.log(active)
     const notyf = new Notyf();
     const forms = document.querySelectorAll('.book')
@@ -298,7 +292,7 @@
       form.addEventListener('submit', e => {
         e.preventDefault();
         if (active == false) {
-          window.location.href = './login'
+          window.location.href = "./login?return_to=<?= basename($_SERVER['PHP_SELF'], '.php') ?>"
         }
         
         fetch('./req/addCart.php', {

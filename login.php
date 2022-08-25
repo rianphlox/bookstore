@@ -56,7 +56,10 @@
 
 
   <?php include './inc/scripts.php' ?>
-
+  <?php
+    
+    $url = isset($_GET['return_to']) ? $_GET['return_to'] : "./" ;
+   ?>
   <script>
     document.getElementById('login').onsubmit = function(e) {
       e.preventDefault();
@@ -64,7 +67,7 @@
         method: 'POST',
         body : new FormData(document.getElementById('login'))
       }).then(res => res.json().then(data =>  {
-        data.msgClass == 'success' ? window.location.href='./cart' : (document.getElementById('login').reset())
+        data.msgClass == 'success' ? window.location.href='<?= $url ?>' : (document.getElementById('login').reset())
       }))
     }
   </script>
